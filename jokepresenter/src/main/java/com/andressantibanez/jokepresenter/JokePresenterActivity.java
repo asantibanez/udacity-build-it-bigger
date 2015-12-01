@@ -22,6 +22,8 @@ public class JokePresenterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_joke_presenter);
 
         String joke = getIntent().getStringExtra(JOKE);
+        if (joke == null)
+            joke = "Poor joke was null. Nobody cares :(";
 
         TextView textView = (TextView) findViewById(R.id.joke);
         textView.setText(joke);
