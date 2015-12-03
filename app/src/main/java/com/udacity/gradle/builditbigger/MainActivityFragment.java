@@ -26,7 +26,7 @@ public class MainActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
 
-        boolean isAppPaidVersion = getResources().getBoolean(R.bool.is_paid);
+        boolean isAppPaidVersion = getResources().getBoolean(R.bool.is_paid_version);
         Log.d(LOG_TAG, "Am I the paid version?: " + isAppPaidVersion);
 
         if (!isAppPaidVersion) {

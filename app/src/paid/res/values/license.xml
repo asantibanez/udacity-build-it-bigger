@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <bool name="is_paid">true</bool>
+    <bool name="is_paid_version">true</bool>
 </resources>
