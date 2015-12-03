@@ -16,6 +16,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -24,23 +25,27 @@ android {
         exclude 'LICENSE.txt'
     }
 
+    productFlavors {
+        paid {
+            versionName "1.0-full"
+        }
+        free {
+            versionName "1.0-demo"
+        }
+    }
+
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-
     //Tests
     androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
-
     //Support
     compile 'com.android.support:appcompat-v7:23.1.1'
-
     // Added for AdMob
     compile 'com.google.android.gms:play-services:8.3.0'
-
     //Add JokePresenter
     compile project(':jokepresenter')
-
     //Backend
-    compile project(path: ':backend', configuration:'android-endpoints')
+    compile project(path: ':backend', configuration: 'android-endpoints')
 }
