@@ -17,3 +17,33 @@ allprojects {
         jcenter()
     }
 }
+
+task runTestsInLocalServer {
+    dependsOn = ['runLocalServer', 'runAndroidTests', 'haltLocalServer']
+}
+
+task runLocalServer {
+    dependsOn ':backend:appengineRun'
+    project(":backend").afterEvaluate { backend ->
+        backend.extensions.appengine.daemon = true
+    }
+    doLast {
+        println "Server started..."
+    }
+}
+
+task runAndroidTests {
+    shouldRunAfter 'runLocalServer'
+    dependsOn ':app:connectedCheck'
+    doLast {
+        println "Testing finished..."
+    }
+}
+
+task haltLocalServer {
+    shouldRunAfter 'runAndroidTests'
+    dependsOn ':backend:appengineStop'
+    doLast {
+        println "Server stopped..."
+    }
+}
